@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "sangroya\\jsonschemea\\validator\\": "src/"
+            "sangroya\\jsonschema\\validator\\": "src/"
         }
     }
 }
