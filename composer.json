@@ -1,0 +1,29 @@
+{
+    "name": "sangroya/yii2-json-schema-validator",
+    "description": "A Yii2 extension that provides a validator class for JSON Schema validation.",
+    "keywords": ["yii2", "json", "schema", "validator"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/sangroya/yii2-json-schema-validator/issues",
+        "source": "https://github.com/sangroya/yii2-json-schema-validator"
+    },
+    "authors": [
+        {
+            "name": "Parveen",
+            "email": "parveen0013@gmail.com"
+        }
+    ],
+    "require": {
+        "justinrainbow/json-schema": "~5.0",
+        "yiisoft/yii2": "2.*"
+    },
+    "require-dev": {
+       
+    },
+    "autoload": {
+        "psr-4": {
+            "sangroya\\jsonschemea\\validator\\": "src/"
+        }
+    }
+}
