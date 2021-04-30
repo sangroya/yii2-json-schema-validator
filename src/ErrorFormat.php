@@ -16,7 +16,7 @@ class ErrorFormat{
         'minimum'=>'The attribute value must be greater than or equal {min}.',
         'maximum'=>'The attribute value must be smaller than or equal {max}.',
         'pattern'=>'Does not match the regex pattern of {pattern}.',
-
+       'format'=>'The attribute should match {format} format'
 
     ];
     public function format($type,$values)
@@ -35,7 +35,7 @@ class ErrorFormat{
             }
         }
         if(isset($this->map[$type]))
-        $msg=str_replace(['{missing}','{path}','{expected}','{used}','{rule}','{max}','{min}','{pattern}'],
+        $msg=str_replace(['{missing}','{path}','{expected}','{used}','{rule}','{max}','{min}','{pattern}','{format}'],
         [
             @$values['missing'],
             @$values['path'],
@@ -44,7 +44,9 @@ class ErrorFormat{
             @$values['rule'],
             @$values['max'],
             @$values['min'],
+           
            $pattern,
+           @$values['format'],
         ],$this->map[$type]);
         
         return $msg;

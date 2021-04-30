@@ -77,10 +77,6 @@ class JsonSchemaValidator extends Validator
     }
 
     public function validateAttribute($model,$attribute,$file){
-        // use Opis\JsonSchema\{
-        //     Validator, ValidationResult, ValidationError, Schema
-        // };
-        
         
         if (!is_string($model->$attribute)) {
             $this->addError($model, $attribute, $this->notString);
@@ -93,33 +89,21 @@ class JsonSchemaValidator extends Validator
             return;
         }
 
-// echo file_get_contents($file);die;
         $schema = \Opis\JsonSchema\Schema::fromJsonString(file_get_contents($file));
        
-        $validator = new \Opis\JsonSchema\Validator();
-       
+       $validator = new \Opis\JsonSchema\Validator(null,null,new \sangroya\JsonSchema\FormatContainer());
         /** @var ValidationResult $result */
         $result = $validator->schemaValidation($data, $schema,20);
         $errorFormat=new ErrorFormat();
-                if ($result->isValid()) {
-            echo '$data is valid', PHP_EOL;
+        if ($result->isValid()) {
+            return true;
         } else {
             /** @var ValidationError $error */
             $errors = $result->getErrors();
-            // echo $result->totalErrors();
-            // print_r($result->getErrors());die;
-            foreach($errors as $key=>$error){
-// print_r($error);die;
-                $path=(implode(".", $error->dataPointer()));
-               // print_r( $error->dataPointer());
-               
-                //print_r($error);
-               // die;
-           // echo '$data is invalid', PHP_EOL;
-        //    echo $key. PHP_EOL;
            
-        //    echo "Error: ", $error->keyword(), PHP_EOL;
-        //    echo $path;
+            foreach($errors as $key=>$error){
+
+                $path=(implode(".", $error->dataPointer()));
            $type=$error->keyword();
             if($missing= $error->keywordArgs()["missing"])
             $path= $path. ".". $missing;
@@ -127,7 +111,7 @@ class JsonSchemaValidator extends Validator
             if(!isset($errorsArray['missing']))
             $errorsArray['missing']='';
             $errorsArray['path']=$path;
-            // print_r($error);die;
+           
             if(in_array($type,['oneOf'])){
                 $errorsArray['rule']=(json_encode($error->schema()->oneOf));
                

@@ -26,7 +26,7 @@ class Number extends \Opis\JsonSchema\Formats\AbstractFormat
      * @inheritDoc
      */
     public function validate($data): bool
-    {
+    {    
         return $this->validateRegex($data, '/^' . self::REGEX . '$/i');
     }
 }
