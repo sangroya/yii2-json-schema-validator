@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "justinrainbow/json-schema": "~5.0",
+        "opis/json-schema": "^1.0",
         "yiisoft/yii2": "2.*"
     },
     "require-dev": {
@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "sangroya\\jsonschema\\validator\\": "src/"
+            "sangroya\\JsonSchema\\": "src/"
         }
     }
 }
