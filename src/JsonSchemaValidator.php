@@ -76,8 +76,8 @@ class JsonSchemaValidator extends Validator
         }
     }
 
-    public function validateAttribute($model,$attribute,$file){
-        
+    public function validateAttribute($model,$attribute){
+      
         if (!is_string($model->$attribute)) {
             $this->addError($model, $attribute, $this->notString);
             return;
@@ -89,7 +89,7 @@ class JsonSchemaValidator extends Validator
             return;
         }
 
-        $schema = \Opis\JsonSchema\Schema::fromJsonString(file_get_contents($file));
+        $schema = \Opis\JsonSchema\Schema::fromJsonString(file_get_contents($this->schema));
        
        $validator = new \Opis\JsonSchema\Validator(null,null,new \sangroya\JsonSchema\FormatContainer());
         /** @var ValidationResult $result */
