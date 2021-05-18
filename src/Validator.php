@@ -396,7 +396,7 @@ class Validator extends \Opis\JsonSchema\Validator
                 );
             }
             $expectedDate=strtotime(date("Y-m-d")) - $schema->exclusiveMinimum*86400;
-          
+           
             if (strtotime($data) > $expectedDate) {
                 $ok = false;
                 $bag->addError(new ValidationError($data, $data_pointer, $parent_data_pointer, $schema, 'exclusiveMinimum', [
@@ -438,7 +438,7 @@ class Validator extends \Opis\JsonSchema\Validator
                 );
             }
             $expectedDate=strtotime(date("Y-m-d")) + $schema->minimum*86400;
-            if (strtotime($data) < $expectedDate) {
+            if (strtotime($data) <= $expectedDate) {
                 $ok = false;
                 $bag->addError(new ValidationError($data, $data_pointer, $parent_data_pointer, $schema, 'exclusiveMaximum', [
                     'max' =>  date("Y-m-d",$expectedDate)
