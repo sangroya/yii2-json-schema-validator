@@ -1,7 +1,7 @@
 <?php
 namespace sangroya\JsonSchema;
 use \Opis\JsonSchema\{
-    IFormat,IFormatContainer
+    IFormat
 };
 class FormatContainer implements IFormatContainer
 {

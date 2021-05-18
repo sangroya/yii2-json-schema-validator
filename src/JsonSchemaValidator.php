@@ -91,7 +91,7 @@ class JsonSchemaValidator extends Validator
 
         $schema = \Opis\JsonSchema\Schema::fromJsonString(file_get_contents($this->schema));
        
-       $validator = new \Opis\JsonSchema\Validator(null,null,new \sangroya\JsonSchema\FormatContainer());
+       $validator = new \sangroya\JsonSchema\Validator(null,null,new FormatContainer());
         /** @var ValidationResult $result */
         $result = $validator->schemaValidation($data, $schema,20);
         $errorFormat=new ErrorFormat();

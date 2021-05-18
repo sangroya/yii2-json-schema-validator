@@ -15,8 +15,11 @@ class ErrorFormat{
         'minLength'=>'The attribute length must be atleast {min} characters.',
         'minimum'=>'The attribute value must be greater than or equal {min}.',
         'maximum'=>'The attribute value must be smaller than or equal {max}.',
+        'exclusiveMinimum'=>'The attribute value must be smaller than or equal {min}.',
+        'exclusiveMaximum'=>'The attribute value must be greater than or equal {max}.',
         'pattern'=>'Does not match the regex pattern of {pattern}.',
-       'format'=>'The attribute should match {format} format'
+         'format'=>'The attribute should match {format} format',
+         'acceptZero'=>'The property {path} {expected} but {used}'
 
     ];
     public function format($type,$values)
