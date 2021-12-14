@@ -85,7 +85,7 @@ class Validator extends \Opis\JsonSchema\Validator
     protected function validateProperties(&$document_data, &$data, array $data_pointer, array $parent_data_pointer, ISchema $document, $schema, ValidationResult $bag, array $defaults = null): bool
     {
       
-        $type = $this->helper->type($data, true,$schema->type);
+        $type = $this->helper->type($data, true,@$schema->type);
        
         if ($type === 'null' || $type === 'boolean') {
             return true;
